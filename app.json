@@ -1,27 +1,39 @@
 {
   "expo": {
-    "name": "starter-kit-expo",
-    "slug": "starter-kit-expo",
+    "name": "Digantara Compass",
+    "slug": "digantara-compass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "starterkitexpo",
-    "userInterfaceStyle": "automatic",
+    "scheme": "digantaracompass",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0a0a1a"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to calculate the distance and bearing to Digantara Industries.",
+        "NSMotionUsageDescription": "We use device motion sensors to determine which direction you are facing."
+      },
+      "bundleIdentifier": "com.digantara.compass"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#0a0a1a"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.digantara.compass",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -30,8 +42,15 @@
     },
     "plugins": [
       "expo-router",
-      "expo-web-browser",
-      "expo-font"
+      "expo-font",
+      "expo-asset",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "We need your location to calculate the distance and bearing to Digantara Industries."
+        }
+      ],
+      "expo-sensors"
     ],
     "experiments": {
       "typedRoutes": true
